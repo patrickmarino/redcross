@@ -83,7 +83,7 @@ function arrayBufferToBase64ImagePNG(buffer) {
 
 var dbname = 'tile';
 var db = new PouchDB(dbname);
-var map = L.map('map').setView([14.588627, 120.983908], 18);
+var map = L.map('map').setView([14.588627, 120.983908], 15);
 new StorageTileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {storage: db}).addTo(map);
 
 
