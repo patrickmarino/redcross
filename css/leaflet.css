@@ -1,3 +1,13 @@
+#map
+{
+    width: 100px;
+    height:100px;
+    min-height: 100%;
+    min-width: 100%;
+    display: block;
+    max-width:60em;
+    padding: 0.2em;
+}
 /* required styles */
 
 .leaflet-pane,

@@ -19,10 +19,9 @@
         <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <!-- Page level plugin CSS-->
         <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
-   integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
-   crossorigin=""/>
+        
         <!-- Custom styles for this template-->
+        <link href="css/leaflet.css" rel="stylesheet">
         <link href="css/sb-admin.css" rel="stylesheet">
     </head>
     <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -131,7 +130,16 @@
                                                     <input  type="text" class="form-control city" name="ct"  id="ct" value="pasig" required>
                                                 </div>
                                             </div>
-                                            <br>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label>Latitude</label>
+                                                    <input  type="text" class="form-control city" name="latitude"  id="latitude" value="" required>
+                                                </div>
+                                                <div class="col">
+                                                    <label>Longitude</label>
+                                                    <input  type="text" class="form-control city" name="longitude"  id="longitude" value="" required>
+                                                </div>
+                                            </div>
                                             <div class="row">
                                                 <div class="col">
                                                     <div class="form-group">
@@ -153,7 +161,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col">
-                                                    <div id="map"></div>
+                                                    <div id="map" style="height:300px"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -286,7 +294,7 @@
         </a>
         <script src="js/pouchdb-1.1.0.js"></script>
        <script src="js/leaflet-src.js"></script>
-       <script src="js/map.js"></script>
+       <script src="js/index-map.js"></script>
         <!-- Bootstrap core JavaScript-->
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -328,8 +336,17 @@
     $(document).ready(function(){
     
     
-      $('#add').click(function(){  
+      $('#add').click(function(){ 
+            document.getElementById('exampleModal').style.display = 'block';
+            setTimeout(function() {
+                mymap.invalidateSize();
+            }, 100);
          $('#exampleModalLabel').text('Add a Volunteer');
+            $('#comparator_modal').on('show.w3.modal', function(){
+                setTimeout(function() {
+                    mymap.invalidateSize();
+                }, 4000);
+            });
              $('#insert').val("Insert");  
              $('#insert_form')[0].reset(); 
               $('#submit').val('Add Volunteer');  

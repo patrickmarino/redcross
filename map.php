@@ -65,7 +65,22 @@
        <script src="js/pouchdb-1.1.0.js"></script>
        <script src="js/leaflet-src.js"></script>
        <script src="js/map.js"></script>
- 
+       <script type="text/javascript">
+          var planes = [
+            ["map1",14.589937861969771, 120.97809791564943],
+            ["map2",14.590643895849555, 120.97118854522705],
+            ["map3",14.587279831759323, 120.97745418548584],
+            ["map4",14.592720452957957, 120.98801136016847],
+            ["map5",14.57972088297873, 120.97921371459961],
+            ["map6",14.582046741006197, 120.97050189971925],
+            ["map7",14.593821020281434, 120.98517894744874]
+            ];
+            for (var i = 0; i < planes.length; i++) {
+               marker = new L.marker([planes[i][1],planes[i][2]])
+                  .bindPopup(planes[i][0])
+                  .addTo(map);
+            }
+       </script>
 
       <!-- Bootstrap core JavaScript-->
       <script src="vendor/jquery/jquery.min.js"></script>
