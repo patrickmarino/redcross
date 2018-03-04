@@ -111,9 +111,11 @@ map.addControl(new Control({position: 'topleft', innerHTML: 'D', handler: functi
     });
 }}));
 
+
 map.on('click', function(e) {
-    document.getElementById('latitude').value=e.latlng.lat;
-    document.getElementById('longitude').value=e.latlng.lng;
+    let lat = e.latlng.lat
+    let lng = e.latlng.lng
+    document.getElementById('latitude').value=lat;
+    document.getElementById('longitude').value=lng;
+    L.marker([lat, lng]).update(map);
 });
-
-

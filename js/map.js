@@ -85,9 +85,10 @@ function arrayBufferToBase64ImagePNG(buffer) {
 
 var dbname = 'tile';
 var db = new PouchDB(dbname);
-var map = L.map('map').setView([14.588627, 120.983908], 15);
-new StorageTileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {storage: db}).addTo(map);
+console.log(db)
+var map = new L.Map('map', {zoom: 15, center: new L.latLng([14.588627, 120.983908]) });  //set center from first 
 
+new StorageTileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {storage: db}).addTo(map);
 
 map.addControl(new Control({position: 'topleft', innerHTML: 'C', handler: function () {
     ajax('cache_keys.json', 'text', function (response) {
@@ -110,6 +111,7 @@ map.addControl(new Control({position: 'topleft', innerHTML: 'D', handler: functi
         }
     });
 }}));
+
 
 // map.on('click', function(e) {
 //     alert("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
